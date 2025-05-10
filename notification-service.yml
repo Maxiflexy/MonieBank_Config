@@ -10,7 +10,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: com.banking.notificationservice.dto,com.banking.accountservice.dto
+        spring.json.trusted.packages: com.maxiflexy.notificationservice.dto,com.banking.accountservice.dto
   mail:
     host: maildev
     port: 1025
