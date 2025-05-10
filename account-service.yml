@@ -2,8 +2,11 @@ server:
   port: 8082
 
 spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+
   datasource:
-    url: jdbc:postgresql://account-db:5432/account_service
+    url: jdbc:postgresql://localhost:5433/account_service
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
@@ -12,7 +15,21 @@ spring:
       ddl-auto: update
     show-sql: true
   kafka:
-    bootstrap-servers: kafka:29092
+    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+# Swagger/OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
